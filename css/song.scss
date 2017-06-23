@@ -10,9 +10,13 @@ body {
     background: transparent;
 }
 
-@keyframes turning{
-    from{transform: rotateZ(0deg)}
-    to{transform: rotateZ(360deg)}
+@keyframes turning {
+    from {
+        transform: rotateZ(0deg)
+    }
+    to {
+        transform: rotateZ(360deg)
+    }
 }
 
 .page {
@@ -51,36 +55,37 @@ body {
     height: 248px;
     width: 248px;
     background-size: 248px;
-    .song-cover {
-    }
+    .song-cover {}
     .disc-turner {
         width: 100%;
-        height:100%;
+        height: 100%;
         animation-name: turning;
         animation-duration: 20s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        .ring,.light,.song-cover{
+        .ring,
+        .light,
+        .song-cover {
             position: absolute;
-            width:100%;
-            height:100%;
+            width: 100%;
+            height: 100%;
         }
-        .ring{
+        .ring {
             z-index: 1;
         }
-        .light{
+        .light {
             z-index: 2;
         }
-        .song-cover{
-            left:50%;
-            top:50%;
+        .song-cover {
+            left: 50%;
+            top: 50%;
             transform: translateX(-50%) translateY(-50%);
-            width:150px;
-            height:150px;
-            margin:auto;
-            img{
+            width: 150px;
+            height: 150px;
+            margin: auto;
+            img {
                 vertical-align: middle;
-                width:100%;
+                width: 100%;
             }
         }
     }
@@ -89,10 +94,52 @@ body {
 .disc-switch {}
 
 .lyric-container {
-    .title {}
-    .content {}
+    margin-top: 40px;
+    padding: 0 35px;
+    color: white;
+    text-align: center;
+    .title {
+        font-size: 15px;
+    }
+    .content {
+        margin-top: 10px;
+        font-size: 13px;
+        overflow: hidden;
+        height: 72px;
+        p { 
+            color:rgba(255, 255, 255, 0.6);
+            height: 24px;
+            padding-bottom: 1px;
+            &.active{
+                color:rgba(255, 255, 255, 1)
+            }
+        }
+    }
 }
 
 .links {
-    .button {}
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 20px;
+    padding: 0 30px;
+    display: flex;
+    .button {
+        line-height: 34px;
+        flex: 1 auto;
+        text-align: center;
+        letter-spacing: 2px;
+        font-size: 16px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+    .btn-l {
+        color: rgb(212, 59, 50);
+        border: rgb(212, 59, 50) 1px solid;
+        margin-right: 14px;
+    }
+    .btn-r {
+        color: #fff;
+        background: rgb(212, 59, 50);
+    }
 }
