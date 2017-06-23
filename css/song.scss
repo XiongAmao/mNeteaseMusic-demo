@@ -106,12 +106,12 @@ body {
         font-size: 13px;
         overflow: hidden;
         height: 72px;
-        p { 
-            color:rgba(255, 255, 255, 0.6);
+        p {
+            color: rgba(255, 255, 255, 0.6);
             height: 24px;
             padding-bottom: 1px;
-            &.active{
-                color:rgba(255, 255, 255, 1)
+            &.active {
+                color: rgba(255, 255, 255, 1)
             }
         }
     }
@@ -133,12 +133,12 @@ body {
         border-radius: 4px;
         text-decoration: none;
     }
-    .btn-l {
+    .btn-open {
         color: rgb(212, 59, 50);
         border: rgb(212, 59, 50) 1px solid;
         margin-right: 14px;
     }
-    .btn-r {
+    .btn-download {
         color: #fff;
         background: rgb(212, 59, 50);
     }
