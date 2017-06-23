@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    background: transparent;
+}
+
+@keyframes turning{
+    from{transform: rotateZ(0deg)}
+    to{transform: rotateZ(360deg)}
+}
+
+.page {
+    min-width: 320px;
+    height: 100%;
+    position: relative;
+    background: transparent no-repeat;
+    margin-top: 0;
+    opacity: 1;
+    overflow: hidden;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-image: url(//p3.music.126.net/-HEGBsjYzlziXwm0REEypA==/17762610347125312.jpg);
+}
+
+.jukebox-container {
+    position: relative;
+    padding-top: 63px;
+}
+
+.crook {
+    position: absolute;
+    background-image: url(//s3.music.126.net/m/s/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862);
+    background-size: contain;
+    top: -63px;
+    left: 110px;
+    z-index: 5;
+    width: 84px;
+    height: 118px;
+}
+
+.disc-wrapper {
+    position: relative;
+    margin: 0 auto;
+    height: 248px;
+    width: 248px;
+    background-size: 248px;
+    .song-cover {
+    }
+    .disc-turner {
+        width: 100%;
+        height:100%;
+        animation-name: turning;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        .ring,.light,.song-cover{
+            position: absolute;
+            width:100%;
+            height:100%;
+        }
+        .ring{
+            z-index: 1;
+        }
+        .light{
+            z-index: 2;
+        }
+        .song-cover{
+            left:50%;
+            top:50%;
+            transform: translateX(-50%) translateY(-50%);
+            width:150px;
+            height:150px;
+            margin:auto;
+            img{
+                vertical-align: middle;
+                width:100%;
+            }
+        }
+    }
+}
+
+.disc-switch {}
+
+.lyric-container {
+    .title {}
+    .content {}
+}
+
+.links {
+    .button {}
+}
