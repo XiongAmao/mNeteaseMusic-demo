@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
   <div class="page">
 
     <section class="jukebox-container">
@@ -25,21 +26,36 @@
 
       </div>
 
-      <div class="disc-switch">
+      <div class="disc-switch ">
+        <div class="js-play icon-play">
+          <svg class="icon play" aria-hidden="true">
+            <use xlink:href="#icon-play"></use>
+          </svg>
+        </div>
+        <div class="js-pause icon-pause ">
+          <svg class="icon pause " aria-hidden="true">
+            <use xlink:href="#icon-pause"></use>
+          </svg>
+        </div>
 
       </div>
     </section>
 
-    <section class="lyric-container">
-      <div class="title">
-        <span>最后一页-洛尘鞅_vw</span>
+    <section class="song-info">
+      <div class="song-header">
+        <span class="song-name">这首歌真好听</span>
+        <span class="song-gap">-</span>
+        <span class="song-author">洛天依</span>
       </div>
-      <div class="content">
-        <p>作曲：xxx</p>
-        <p class="active">作词：xxx</p>
-        <p>原唱：xxx</p>
-        <p>xxx</p>
-        <p>xxx</p>
+      <div class="song-lyrics">
+        <div class="lrc-scroll">
+          <p>作曲：xxx</p>
+          <p class="active">作词：xxx</p>
+          <p>原唱：xxx</p>
+          <p>xxx</p>
+          <p>xxx</p>
+        </div>
+
       </div>
     </section>
 
@@ -49,6 +65,8 @@
     </section>
   </div>
   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//at.alicdn.com/t/font_arjoyrr3x84u0udi.js"></script>
+  <script src="./js/song.js"></script>
 </body>
 
 </html>

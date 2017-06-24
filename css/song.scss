@@ -1,26 +1,15 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
-}
+@function pxvw($px){ @return $px / 375 * 100vw; } 
 
-html,
-body {
-    height: 100%;
-    background: transparent;
-}
+* { margin: 0; padding: 0; box-sizing: border-box }
 
-@keyframes turning {
-    from {
-        transform: rotateZ(0deg)
-    }
-    to {
-        transform: rotateZ(360deg)
-    }
-}
+html, body { height: 100%; background: transparent; font-size: 13px; @media(max-width:375px){font-size: 15px}; }
+
+ @keyframes turning { from { transform: rotateZ(0deg) } to { transform: rotateZ(360deg) } }   
+
+
 
 .page {
-    min-width: 320px;
+    min-width: pxvw(375);
     height: 100%;
     position: relative;
     background: transparent no-repeat;
@@ -35,26 +24,37 @@ body {
 
 .jukebox-container {
     position: relative;
-    padding-top: 63px;
+    margin-top: pxvw(70);
+    &.playing{
+        .disc-wrapper .disc-turner{
+            animation-play-state: running;
+        }
+        .disc-switch .icon-play{
+           display: none;
+        }
+        .disc-switch .icon-pause{
+           display: flex;
+        }    
+    }
 }
 
 .crook {
     position: absolute;
     background-image: url(//s3.music.126.net/m/s/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862);
     background-size: contain;
-    top: -63px;
-    left: 110px;
+    top: pxvw(-70);
+    left: pxvw(132);
     z-index: 5;
-    width: 84px;
-    height: 118px;
+    width: pxvw(100);
+    height: pxvw(140);
 }
 
 .disc-wrapper {
     position: relative;
     margin: 0 auto;
-    height: 248px;
-    width: 248px;
-    background-size: 248px;
+    height: pxvw(295);
+    width: pxvw(295);
+    background-size: pxvw(295);
     .song-cover {}
     .disc-turner {
         width: 100%;
@@ -63,9 +63,8 @@ body {
         animation-duration: 20s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        .ring,
-        .light,
-        .song-cover {
+        animation-play-state: paused;
+        .ring, .light, .song-cover {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -80,8 +79,8 @@ body {
             left: 50%;
             top: 50%;
             transform: translateX(-50%) translateY(-50%);
-            width: 150px;
-            height: 150px;
+            width: pxvw(184);
+            height: pxvw(184);
             margin: auto;
             img {
                 vertical-align: middle;
@@ -91,21 +90,52 @@ body {
     }
 }
 
-.disc-switch {}
+.disc-switch {
+    position: absolute; left:50%; top:50%; transform: translateX(-50%) translateY(-50%); display: flex; justify-content: center; align-items: center; width:pxvw(57);height:pxvw(57); border-radius: 50%; border:1px solid #fff; background: rgba(0,0,0,.4);
+    .icon-play,
+    .icon-pause{ height:100%;width:100%;display: flex;justify-content: center;align-items: center }  
+    .icon-play{
+        display: flex;
+    }
+    .icon-pause{
+        display: none;
+    }
 
-.lyric-container {
-    margin-top: 40px;
-    padding: 0 35px;
+    .icon{
+        width:pxvw(25);height:pxvw(25);
+        fill: #fff;
+        display: block;
+    }
+    .icon.play{
+        margin-left:pxvw(2);
+    }
+}
+
+.song-info {
+    margin-top: pxvw(30);
+    padding: 0 pxvw(35);
     color: white;
     text-align: center;
-    .title {
-        font-size: 15px;
+    .song-header {
+        font-size: 16px;
+        color:#fff;
+        @media(min-width:375px){
+            font-size: 18px;
+        }
+        .song-name{}
+        .song-gap{}
+        .song-author{
+            color:rgba(255, 255, 255, 0.6);
+        }
+
     }
-    .content {
+    .song-lyrics {
         margin-top: 10px;
-        font-size: 13px;
         overflow: hidden;
-        height: 72px;
+        height: pxvw(80);
+        .lrc-scroll{
+            transition: 0.3s ease;
+        }
         p {
             color: rgba(255, 255, 255, 0.6);
             height: 24px;
