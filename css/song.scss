@@ -92,6 +92,11 @@ html, body { height: 100%; background: transparent; font-size: 13px; @media(max-
 
 .disc-switch {
     position: absolute; left:50%; top:50%; transform: translateX(-50%) translateY(-50%); display: flex; justify-content: center; align-items: center; width:pxvw(57);height:pxvw(57); border-radius: 50%; border:1px solid #fff; background: rgba(0,0,0,.4);
+    opacity: 1;
+    transition: 2s opacity ease;
+    &.ready{
+        opacity: 0;
+    }
     .icon-play,
     .icon-pause{ height:100%;width:100%;display: flex;justify-content: center;align-items: center }  
     .icon-play{
