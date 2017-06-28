@@ -7,8 +7,10 @@ $(function () {
   console.dir(audio);
   $(audio).on('canplay',function(){
     audio.play()
+    console.log('can play now')
     jukebox.addClass('playing')
     discSwitch.removeClass('ready')
+    $('.js-icon-loading').remove()
   })
   $(".js-play").on('click',function(){
     audio.play()

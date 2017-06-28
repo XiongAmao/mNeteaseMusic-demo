@@ -1,12 +1,32 @@
-@function pxvw($px){ @return $px / 375 * 100vw; } 
+@function pxvw($px) {
+    @return $px / 375 * 100vw;
+}
 
-* { margin: 0; padding: 0; box-sizing: border-box }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
 
-html, body { height: 100%; background: transparent; font-size: 13px; @media(max-width:375px){font-size: 15px}; }
+html,
+body {
+    height: 100%;
+    background: transparent;
+    font-size: 13px;
+    @media(max-width: 375px) {
+        font-size: 15px
+    }
+    ;
+}
 
- @keyframes turning { from { transform: rotateZ(0deg) } to { transform: rotateZ(360deg) } }   
-
-
+@keyframes turning {
+    from {
+        transform: rotateZ(0deg)
+    }
+    to {
+        transform: rotateZ(360deg)
+    }
+}
 
 .page {
     min-width: pxvw(375);
@@ -20,22 +40,6 @@ html, body { height: 100%; background: transparent; font-size: 13px; @media(max-
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-image: url(//p3.music.126.net/-HEGBsjYzlziXwm0REEypA==/17762610347125312.jpg);
-}
-
-.jukebox-container {
-    position: relative;
-    margin-top: pxvw(70);
-    &.playing{
-        .disc-wrapper .disc-turner{
-            animation-play-state: running;
-        }
-        .disc-switch .icon-play{
-           display: none;
-        }
-        .disc-switch .icon-pause{
-           display: flex;
-        }    
-    }
 }
 
 .crook {
@@ -64,7 +68,9 @@ html, body { height: 100%; background: transparent; font-size: 13px; @media(max-
         animation-iteration-count: infinite;
         animation-timing-function: linear;
         animation-play-state: paused;
-        .ring, .light, .song-cover {
+        .ring,
+        .light,
+        .song-cover {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -90,29 +96,85 @@ html, body { height: 100%; background: transparent; font-size: 13px; @media(max-
     }
 }
 
+.jukebox-container {
+    position: relative;
+    margin-top: pxvw(70);
+    &.playing {
+        .disc-wrapper .disc-turner {
+            animation-play-state: running;
+        }
+        .disc-switch .icon-play {
+            display: none;
+        }
+        .disc-switch .icon-pause {
+            display: flex;
+        }
+        .disc-switch .icon-loading{
+            opacity: 0;
+        }
+    }
+}
+
 .disc-switch {
-    position: absolute; left:50%; top:50%; transform: translateX(-50%) translateY(-50%); display: flex; justify-content: center; align-items: center; width:pxvw(57);height:pxvw(57); border-radius: 50%; border:1px solid #fff; background: rgba(0,0,0,.4);
-    opacity: 1;
-    transition: 2s opacity ease;
-    &.ready{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: pxvw(57);
+    height: pxvw(57);
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: rgba(0, 0, 0, .4);
+    transition: 2s ease;
+    &.ready {
+        border: none;
+        background: transparent;
+        
+    }
+    &.ready .icon-play,
+    &.ready .icon-pause {
         opacity: 0;
     }
     .icon-play,
-    .icon-pause{ height:100%;width:100%;display: flex;justify-content: center;align-items: center }  
-    .icon-play{
+    .icon-pause,
+    .icon-loading {
+        transition: 2s ease;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+    }
+    .icon-play {
         display: flex;
     }
-    .icon-pause{
+    .icon-pause {
         display: none;
     }
-
-    .icon{
-        width:pxvw(25);height:pxvw(25);
+    .icon-loading {
+        position: absolute;
+        z-index: 50;
+        animation-name: turning;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        .icon.loading {
+            width: pxvw(40);
+            height: pxvw(40);
+        }
+    }
+    .icon {
+        width: pxvw(25);
+        height: pxvw(25);
         fill: #fff;
         display: block;
     }
-    .icon.play{
-        margin-left:pxvw(4);
+    .icon.play {
+        margin-left: pxvw(4);
     }
 }
 
@@ -123,22 +185,21 @@ html, body { height: 100%; background: transparent; font-size: 13px; @media(max-
     text-align: center;
     .song-header {
         font-size: 16px;
-        color:#fff;
-        @media(min-width:375px){
+        color: #fff;
+        @media(min-width: 375px) {
             font-size: 18px;
         }
-        .song-name{}
-        .song-gap{}
-        .song-author{
-            color:rgba(255, 255, 255, 0.6);
+        .song-name {}
+        .song-gap {}
+        .song-author {
+            color: rgba(255, 255, 255, 0.6);
         }
-
     }
     .song-lyrics {
         margin-top: 10px;
         overflow: hidden;
         height: pxvw(80);
-        .lrc-scroll{
+        .lrc-scroll {
             transition: 0.3s ease;
         }
         p {
