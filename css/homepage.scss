@@ -25,6 +25,26 @@ body {
     position: relative;
 }
 
+ ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #ccc;
+}
+
+ :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+}
+
+ ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #ccc;
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #ccc;
+}
+
 
 /* header */
 
@@ -126,14 +146,15 @@ main {
     }
 }
 
+
 /* 歌单 */
+
 .song-list {
     a {
         font-size: 17px;
         text-decoration: none;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         &:visited {
             text-decoration: none;
             color: #000;
@@ -172,7 +193,8 @@ main {
         }
         .song-icon-play {
             padding-right: pxvw(10);
-            padding-left:pxvw(4);
+            padding-left: pxvw(4);
+            padding-top: pxvw(8);
             svg {
                 fill: #aaa;
                 width: pxvw(22);
@@ -181,7 +203,6 @@ main {
         }
     }
 }
-
 
 article.container {
     >section {
@@ -254,15 +275,17 @@ article.container {
     padding-bottom: pxvw(4);
 }
 
+
 /* 广告 */
+
 .art {
     padding-top: pxvw(60);
     padding-bottom: pxvw(17);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background:url(http://s3.music.126.net/m/s/img/recommand_bg_2x.png?d045fafc60e017b653f8065a87496922) no-repeat;
-    background-size: cover; 
+    background: url(http://s3.music.126.net/m/s/img/recommand_bg_2x.png?d045fafc60e017b653f8065a87496922) no-repeat;
+    background-size: cover;
     .art-logo {
         display: flex;
         justify-content: center;
@@ -272,24 +295,128 @@ article.container {
             height: 44px;
         }
     }
-    a{
-        color:#D43C33;
-        padding:pxvw(8) pxvw(20);
+    a {
+        color: #D43C33;
+        padding: pxvw(8) pxvw(20);
         font-size: 16px;
         border: 1px solid #D43C33;
         border-radius: pxvw(38);
         text-decoration: none;
         margin: pxvw(14) pxvw(40) pxvw(4);
         text-align: center;
-        &::visited{
+        &::visited {
             text-decoration: none;
-            color:#D43C33;
+            color: #D43C33;
         }
     }
-    .copyright{
+    .copyright {
         text-align: center;
         font-size: 12px;
-        color:#888;
+        color: #888;
         transform: scale(.75)
+    }
+}
+
+
+/* 热歌榜 */
+
+.hot-list {
+    .hl-wrapper {
+        background: url(http://s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee) no-repeat;
+        background-size: cover;
+        position: relative;
+        padding-top: pxvw(146);
+        .dimmer {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: rgba(0, 0, 0, .2);
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+    }
+    .hl-banner {
+        /*padding-top: 38.9%;*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: pxvw(25) pxvw(20);
+        color: #fff;
+        .hl-logo {
+            background: url(http://s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+            background-size: 166px 97px;
+            width: 142px;
+            height: 67px;
+            background-position: -24px -30px;
+        }
+        .hl-updatetime {
+            margin-top: pxvw(10);
+            font-size: 12px;
+            transform-origin: left top;
+            transform: scale(.91);
+        }
+    }
+    .song-rank {
+        font-size: 17px;
+        color: #999;
+        position: absolute;
+        top: 0;
+        transform: translateX(10%);
+        left: -9%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        &.top {
+            color: #DF3436;
+        }
+    }
+    .song-item {
+        margin-left: 10%;
+        position: relative;
+    }
+    .show-all {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        color: #999;
+        padding: pxvw(20);
+    }
+}
+
+
+/* 搜索 */
+
+.search {
+    
+    form {
+        padding: pxvw(15) pxvw(10);
+        border-bottom: 1px solid #F0F1F2;
+        .input-container {
+            display: flex;
+            width: 100%;
+            background: #EBECEC;
+            justify-content: center;
+            border-radius: pxvw(30);
+        }
+        .left {
+            width: 10%;
+        }
+        input {
+            flex: 1;
+            outline: none;
+            border: none;
+            width: 80%;
+            height: pxvw(30);
+            background: transparent;
+            line-height: pxvw(18);
+            font-size: 14px;
+            color: #333;
+        }
     }
 }
