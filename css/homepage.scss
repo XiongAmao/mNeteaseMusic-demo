@@ -5,7 +5,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 ul,
@@ -32,7 +32,9 @@ body {
     width: 100%;
     background: #D43C33;
     position: sticky;
+    top: 0;
     display: flex;
+    z-index: 100;
     justify-content: space-between;
     align-items: center;
     height: 64px;
@@ -60,14 +62,16 @@ body {
 /* 主体 */
 
 main {
-    padding-top: 40px;
+    /* padding-top: 40px; */
 }
 
 .site-nav {
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 64px;
     left: 0;
+    background: #fff;
+    z-index: 100;
     border-bottom: 1px solid #E8E8E8;
     ol {
         height: 39px;
@@ -122,6 +126,75 @@ main {
     }
 }
 
+/* 歌单 */
+.song-list {
+    a {
+        font-size: 17px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &:visited {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+    .song-item {
+        border-bottom: 1px solid #F1F1F2;
+        margin-left: pxvw(10);
+        padding: pxvw(6) 0;
+        .song-infos {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            .sg-title {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                span {
+                    overflow: hidden;
+                    color: #888;
+                }
+            }
+            .sg-singer {
+                font-size: 12px;
+                color: #888;
+                display: flex;
+                align-items: center;
+                .icon.sq {
+                    width: pxvw(20);
+                    height: pxvw(15);
+                    fill: #FE672E;
+                    margin-left: pxvw(-2)
+                }
+            }
+        }
+        .song-icon-play {
+            padding-right: pxvw(10);
+            padding-left:pxvw(4);
+            svg {
+                fill: #aaa;
+                width: pxvw(22);
+                height: pxvw(22)
+            }
+        }
+    }
+}
+
+
+article.container {
+    >section {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+}
+
+
+/* 推荐歌单 */
+
 .music-recmd {
     .play-lists {
         ul {
@@ -130,23 +203,93 @@ main {
             justify-content: space-between;
         }
         ul>li {
-            width:32.9%;
+            width: 32.9%;
             position: relative;
-            margin-bottom: pxvw(8);
-            img{
-                width:100%;
+            margin-bottom: pxvw(12);
+            img {
+                width: 100%;
             }
-            p{
+            p {
                 font-size: 13px;
-                padding:pxvw(1) pxvw(4);
+                padding: pxvw(1) pxvw(4);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                line-height: 1.25em;
+                max-height: 2.5em;
             }
-            .plays{
+            .plays {
                 position: absolute;
-                right:pxvw(6);
-                top:pxvw(2);
+                z-index: 5;
+                right: pxvw(6);
+                top: pxvw(4);
                 font-size: 12px;
-                color:#fff;
+                color: #fff;
+                line-height: 1;
+                background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMiAyMCI+PGcgb3BhY2l0eT0iLjE1Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiMwNDAwMDAiIGQ9Im0yMiAxNi43NzdjMCAxLjIzMy0xLjEyMSAyLjIzMy0yLjUwNiAyLjIzMy0xLjM4NCAwLTIuNTA2LTEtMi41MDYtMi4yMzN2LTIuNTUzYzAtMS4yMzQgMS4xMjItMi4yMzMgMi41MDYtMi4yMzMuMTc0IDAgLjM0My4wMTcuNTA2LjA0NnYtMS4zN2gtLjAzM2MuMDE3LS4yMi4wMzMtLjQ0MS4wMzMtLjY2NiAwLTQuNDE4LTMuNTgyLTgtOC04LTQuNDE4IDAtOCAzLjU4Mi04IDggMCAuMjI1LjAxNi40NDYuMDM0LjY2NmgtLjAzNHYxLjM3Yy4xNjMtLjAyOS4zMzMtLjA0Ni41MDUtLjA0NiAxLjM4NCAwIDIuNTA2Ljk5OSAyLjUwNiAyLjIzM3YyLjU1M2MwIDEuMjMzLTEuMTIyIDIuMjMzLTIuNTA2IDIuMjMzcy0yLjUwNS0uOTk5LTIuNTA1LTIuMjMzdi0yLjU1M2MwLS4yNTguMDU5LS41MDEuMTQ4LS43My0uMDg1LS4xNDgtLjE0OC0uMzEtLjE0OC0uNDkzdi0yLjY2N2MwLS4wMjMuMDEyLS4wNDMuMDEzLS4wNjctLjAwNC0uMDg4LS4wMTMtLjE3Ni0uMDEzLS4yNjYgMC01LjUyMyA0LjQ3Ny0xMCAxMC0xMCA1LjUyMyAwIDEwIDQuNDc3IDEwIDEwIDAgLjA5LS4wMDkuMTc4LS4wMTQuMjY2LjAwMi4wMjQuMDE0LjA0NC4wMTQuMDY3djJjMCAuMzA2LS4xNDUuNTY5LS4zNi43NTMuMjI0LjMzNC4zNi43Mi4zNiAxLjEzOHYyLjU1MiIvPjwvZz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNmZmYiIGQ9Im0yMCAxNi43NzdjMCAxLjIzMy0xLjEyMSAyLjIzMy0yLjUwNiAyLjIzMy0xLjM4NCAwLTIuNTA2LTEtMi41MDYtMi4yMzN2LTIuNTUzYzAtMS4yMzQgMS4xMjItMi4yMzMgMi41MDYtMi4yMzMuMTc0IDAgLjM0My4wMTcuNTA2LjA0NnYtMS4zN2gtLjAzM2MuMDE3LS4yMi4wMzMtLjQ0MS4wMzMtLjY2NiAwLTQuNDE4LTMuNTgyLTgtOC04LTQuNDE4IDAtOCAzLjU4Mi04IDggMCAuMjI1LjAxNi40NDYuMDM0LjY2NmgtLjAzNHYxLjM3Yy4xNjMtLjAyOS4zMzMtLjA0Ni41MDUtLjA0NiAxLjM4NCAwIDIuNTA2Ljk5OSAyLjUwNiAyLjIzM3YyLjU1M2MwIDEuMjMzLTEuMTIyIDIuMjMzLTIuNTA2IDIuMjMzcy0yLjUwNS0uOTk5LTIuNTA1LTIuMjMzdi0yLjU1M2MwLS4yNTguMDU5LS41MDEuMTQ4LS43My0uMDg1LS4xNDgtLjE0OC0uMzEtLjE0OC0uNDkzdi0yLjY2N2MwLS4wMjMuMDEyLS4wNDMuMDEzLS4wNjctLjAwNC0uMDg4LS4wMTMtLjE3Ni0uMDEzLS4yNjYgMC01LjUyMyA0LjQ3Ny0xMCAxMC0xMCA1LjUyMyAwIDEwIDQuNDc3IDEwIDEwIDAgLjA5LS4wMDkuMTc4LS4wMTQuMjY2LjAwMi4wMjQuMDE0LjA0NC4wMTQuMDY3djJjMCAuMzA2LS4xNDUuNTY5LS4zNi43NTMuMjI0LjMzNC4zNi43Mi4zNiAxLjEzOHYyLjU1MiIvPjwvc3ZnPg==) 0 no-repeat;
+                background-size: 11px 10px;
+                padding-left: 12px;
+            }
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-image: linear-gradient(180deg, rgba(0, 0, 0, .2), transparent);
+                height: pxvw(20);
+                z-index: 4;
             }
         }
+    }
+}
+
+
+/* 最新音乐 */
+
+.lastest-music {
+    padding-bottom: pxvw(4);
+}
+
+/* 广告 */
+.art {
+    padding-top: pxvw(60);
+    padding-bottom: pxvw(17);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background:url(http://s3.music.126.net/m/s/img/recommand_bg_2x.png?d045fafc60e017b653f8065a87496922) no-repeat;
+    background-size: cover; 
+    .art-logo {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        svg {
+            width: 230px;
+            height: 44px;
+        }
+    }
+    a{
+        color:#D43C33;
+        padding:pxvw(8) pxvw(20);
+        font-size: 16px;
+        border: 1px solid #D43C33;
+        border-radius: pxvw(38);
+        text-decoration: none;
+        margin: pxvw(14) pxvw(40) pxvw(4);
+        text-align: center;
+        &::visited{
+            text-decoration: none;
+            color:#D43C33;
+        }
+    }
+    .copyright{
+        text-align: center;
+        font-size: 12px;
+        color:#888;
+        transform: scale(.75)
     }
 }
