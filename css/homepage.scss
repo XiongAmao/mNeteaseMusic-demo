@@ -338,7 +338,8 @@ article.container {
 
 /* 热歌榜 */
 
-.hot-list {
+.hot-list { 
+    position: relative;
     .hl-wrapper {
         background: url(http://orzqfde1a.bkt.clouddn.com/hot_music_bg_2x.jpg) no-repeat;
         background-size: cover;
@@ -404,6 +405,10 @@ article.container {
         align-items: center;
         color: #999;
         padding: pxvw(20);
+    }
+    .song-list{
+        position: relative;
+        min-height: pxvw(50);
     }
 }
 

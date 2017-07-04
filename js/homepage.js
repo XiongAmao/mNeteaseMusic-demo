@@ -13,17 +13,6 @@ $(function () {
     getLastestMusic()
 
 
-    function getHotList() {
-        $.get('./json/hot_list.json')
-            .then(function (response) {
-                let $ol = $(".hot-list>ol.song-list")
-                let hasRank = true
-                response.forEach(function (element) {
-                    appendList($ol, element, hasRank)
-                });
-                $ol.siblings(".loading-spin").remove()
-            })
-    }
     function getLastestMusic() {
         $.get('./json/lastest_music.json')
             .then(function (response) {
@@ -34,6 +23,18 @@ $(function () {
                 });
                 $ol.siblings(".loading-spin").remove()
 
+            })
+    }
+
+    function getHotList() {
+        $.get('./json/hot_list.json')
+            .then(function (response) {
+                let $ol = $(".hot-list>ol.song-list")
+                let hasRank = true
+                response.forEach(function (element) {
+                    appendList($ol, element, hasRank)
+                });
+                $ol.find(".loading-spin").remove()
             })
     }
 
