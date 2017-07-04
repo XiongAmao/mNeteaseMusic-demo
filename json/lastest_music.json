@@ -1,0 +1,82 @@
+[
+    {
+        "id": "1",
+        "title": "追光者",
+        "subTitle": "电视剧《夏至未至》插曲",
+        "singer": "岑宁儿",
+        "album": "夏至未至 影视原声带",
+        "sq": true
+    },
+    {
+        "id": "3",
+        "title": "成都",
+        "subTitle": "",
+        "singer": "赵雷",
+        "album": "成都",
+        "sq": false
+    },
+    {
+        "id": "6",
+        "title": "说散就散",
+        "subTitle": "",
+        "singer": "JC",
+        "album": "说散就散",
+        "sq": true
+    },
+    {
+        "id": "7",
+        "title": "刚好遇见你",
+        "subTitle": "",
+        "singer": "李玉刚",
+        "album": "刚好遇见你",
+        "sq": true
+    },
+    {
+        "id": "8",
+        "title": "全部都是你",
+        "subTitle": "",
+        "singer": "Dragon Pig / CNBALLER / CLOUD WANG",
+        "album": "全部都是你",
+        "sq": false
+    },
+    {
+        "id": "9",
+        "title": "Shape of You",
+        "subTitle": "",
+        "singer": "Ed Sheeran",
+        "album": "Shape Of You",
+        "sq": true
+    },
+    {
+        "id": "13",
+        "title": "마지막처럼 ",
+        "subTitle": "",
+        "singer": "BLACKPINK",
+        "album": "마지막처럼",
+        "sq": true
+    },
+    {
+        "id": "14",
+        "title": "理想三旬",
+        "subTitle": "",
+        "singer": "陈鸿宇",
+        "album": "浓烟下的诗歌电台",
+        "sq": true
+    },
+    {
+        "id": "17",
+        "title": "可乐",
+        "subTitle": "",
+        "singer": "赵紫骅",
+        "album": "赵浴辰原创demo精选",
+        "sq": true
+    },
+    {
+        "id": "18",
+        "title": "Faded",
+        "subTitle": "",
+        "singer": "Alan Walker",
+        "album": "Faded",
+        "sq": true
+    }
+]

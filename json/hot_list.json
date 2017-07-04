@@ -21,7 +21,7 @@
         "subTitle": "",
         "singer": "赵雷",
         "album": "成都",
-        "sq": true
+        "sq": false
     },
     {
         "id": "4",
@@ -61,7 +61,7 @@
         "subTitle": "",
         "singer": "Dragon Pig / CNBALLER / CLOUD WANG",
         "album": "全部都是你",
-        "sq": true
+        "sq": false
     },
     {
         "id": "9",
