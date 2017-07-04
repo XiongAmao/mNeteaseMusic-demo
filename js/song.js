@@ -1,4 +1,5 @@
 $(function () {
+
     let songId = location.search.match(/\bid=([^&]*)/)[1]
     var jukebox = $('.jukebox-container')
     var $discSwitch = $('.disc-switch')
