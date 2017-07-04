@@ -1,7 +1,7 @@
 $(function () {
     // topbar
     $(".site-nav>ol").on('click', "li", function (e) {
-       if(this == document.querySelectorAll(".site-nav>ol>li")[1]) getHotList()
+        if (this == document.querySelectorAll(".site-nav>ol>li")[1]) getHotList()
         var index = $(this).addClass('selected')
             .siblings().removeClass('selected')
             .end().index()
@@ -11,30 +11,30 @@ $(function () {
 
     // let id = parseInt(location.search.match(/\bid=([^&]*)/)[1],10) 
     getLastestMusic()
-    
+
 
     function getHotList() {
-        $.get('./json/hot_list.json').then(function (response) {
-            let items = response
-            let $ol = $(".hot-list>ol.song-list")
-            let hasRank = true
-            items.forEach(function (element) {
-                appendList($ol, element, hasRank)
-            });
-            $ol.siblings(".loading-spin").remove()
-        })
+        $.get('./json/hot_list.json')
+            .then(function (response) {
+                let $ol = $(".hot-list>ol.song-list")
+                let hasRank = true
+                response.forEach(function (element) {
+                    appendList($ol, element, hasRank)
+                });
+                $ol.siblings(".loading-spin").remove()
+            })
     }
     function getLastestMusic() {
-        $.get('./json/lastest_music.json').then(function (response) {
-            let items = response
-            let $ol = $(".lastest-music>ol.song-list")
-            let hasRank = false
-            items.forEach(function (element) {
-                appendList($ol, element, hasRank)
-            });
-            $ol.siblings(".loading-spin").remove()
-            
-        })
+        $.get('./json/lastest_music.json')
+            .then(function (response) {
+                let $ol = $(".lastest-music>ol.song-list")
+                let hasRank = false
+                response.forEach(function (element) {
+                    appendList($ol, element, hasRank)
+                });
+                $ol.siblings(".loading-spin").remove()
+
+            })
     }
 
     function appendList($ol, element, hasRank) {
@@ -42,7 +42,7 @@ $(function () {
         let li
         if (hasRank) {
             let rank = (id > 9) ? id : `0${id}`
-            let top = id>3 ? "":"top"
+            let top = id > 3 ? "" : "top"
             li = `
                <li class="song-item">
                    <div class="song-rank ${top}">${rank}</div>
