@@ -21,6 +21,7 @@ $(function () {
             items.forEach(function (element) {
                 appendList($ol, element, hasRank)
             });
+            $ol.siblings(".loading-spin").remove()
         })
     }
     function getLastestMusic() {
@@ -31,6 +32,8 @@ $(function () {
             items.forEach(function (element) {
                 appendList($ol, element, hasRank)
             });
+            $ol.siblings(".loading-spin").remove()
+            
         })
     }
 
