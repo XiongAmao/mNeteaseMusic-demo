@@ -1,24 +1,44 @@
 $(function () {
-  
-  var jukebox = $('.jukebox-container')
-  var audio = document.createElement('audio');
-  var discSwitch = $('.disc-switch')
-  audio.src = 'http://ond8gcwbr.bkt.clouddn.com/%E6%B4%9B%E5%B0%98%E9%9E%85_vvv%20-%20%E6%9C%80%E5%90%8E%E4%B8%80%E9%A1%B5.mp3'
-  console.dir(audio);
-  $(audio).on('canplay',function(){
-    audio.play()
-    console.log('can play now')
-    jukebox.addClass('playing')
-    discSwitch.removeClass('ready')
-    $('.js-icon-loading').remove()
-  })
-  $(".js-play").on('click',function(){
-    audio.play()
-    jukebox.addClass('playing')
-  })
-  $(".js-pause").click(function(){
-    audio.pause()
-    jukebox.removeClass('playing')
-  })
-  
+    let songId = location.search.match(/\bid=([^&]*)/)[1]
+    var jukebox = $('.jukebox-container')
+    var $discSwitch = $('.disc-switch')
+
+    var audio = document.createElement('audio');
+
+    $.get("./json/song_list.json")
+        .then(function (response) {
+            response.forEach(function (element) {
+                if (element.id === songId) {
+                    getMusicInfo(element)
+                }
+            })
+        })
+
+    function getMusicInfo(elm) {
+        setPlay(elm.url)
+        $(".page .background").css("background-image", `url(${elm.coverBlurUrl})`)
+        $(".song-cover").find('img').attr("src", elm.coverUrl)
+        $(".js-song-name").text(elm.title)
+        $('.js-song-author').text(elm.singer)
+    }
+    function setPlay(url) {
+        audio.src = url
+        $(audio).on('canplay', function () {
+            audio.play()
+            console.log('can play now')
+            jukebox.addClass('playing')
+            $discSwitch.removeClass('ready')
+            $('.js-icon-loading').remove()
+        })
+        $(".js-play").on('click', function () {
+            audio.play()
+            jukebox.addClass('playing')
+        })
+        $(".js-pause").click(function () {
+            audio.pause()
+            jukebox.removeClass('playing')
+        })
+    }
+
+
 })

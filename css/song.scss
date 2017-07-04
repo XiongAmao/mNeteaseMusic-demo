@@ -36,15 +36,32 @@ body {
     margin-top: 0;
     opacity: 1;
     overflow: hidden;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    background-image: url(//p3.music.126.net/-HEGBsjYzlziXwm0REEypA==/17762610347125312.jpg);
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        background: transparent no-repeat;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        transform: scale(1.5);
+        transform-origin: center top;
+        &:after {
+            content: "";
+            display: block;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, .6);
+        }
+    }
 }
 
 .crook {
     position: absolute;
-    background-image: url(//s3.music.126.net/m/s/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862);
+    background-image: url(http://orzqfde1a.bkt.clouddn.com/needle.png);
     background-size: contain;
     top: pxvw(-70);
     left: pxvw(132);
@@ -109,7 +126,7 @@ body {
         .disc-switch .icon-pause {
             display: flex;
         }
-        .disc-switch .icon-loading{
+        .disc-switch .icon-loading {
             opacity: 0;
         }
     }
@@ -132,7 +149,6 @@ body {
     &.ready {
         border: none;
         background: transparent;
-        
     }
     &.ready .icon-play,
     &.ready .icon-pause {
@@ -186,6 +202,10 @@ body {
     .song-header {
         font-size: 16px;
         color: #fff;
+        overflow: hidden;
+        white-space: nowrap;
+        word-break: normal;
+        text-overflow: ellipsis;
         @media(min-width: 375px) {
             font-size: 18px;
         }
