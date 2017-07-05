@@ -85,7 +85,7 @@ $(function () {
             } 
              
 
-        }, 200)
+        }, 500)
     }
     function getAudioCurrentTime(audio) {
         let seconds = audio.currentTime

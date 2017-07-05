@@ -182,7 +182,7 @@ body {
     .song-info .song-lyrics p {
       color: rgba(255, 255, 255, 0.6);
       line-height: 2;
-      transition: .3s linear; }
+      transition: .6s linear; }
       @media (max-width: 374px) {
         .song-info .song-lyrics p {
           font-size: 13px;
