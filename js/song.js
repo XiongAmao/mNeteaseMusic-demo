@@ -1,7 +1,7 @@
 var audiotest
 $(function () {
 
-    let songId = location.search.match(/\bid=([^&]*)/)[1] ? location.search.match(/\bid=([^&]*)/)[1]: "-1" 
+    let songId = location.search.match(/\bid=([^&]*)/) ? location.search.match(/\bid=([^&]*)/)[1]: "-1" 
     let jukebox = $('.jukebox-container')
     let $discSwitch = $('.disc-switch')
     let $songLyrics = $(".song-lyrics")
