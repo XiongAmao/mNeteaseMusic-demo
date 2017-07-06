@@ -75,11 +75,11 @@ body {
 .disc-wrapper {
   position: relative;
   margin: 0 auto;
-  height: 91.2vw;
-  width: 91.2vw;
+  height: 80vw;
+  width: 80vw;
   max-width: 342px;
   max-height: 342px;
-  background-size: 91.2vw; }
+  background-size: 80vw; }
   .disc-wrapper .disc-turner {
     width: 100%;
     height: 100%;
@@ -102,8 +102,8 @@ body {
       left: 50%;
       top: 50%;
       transform: translateX(-50%) translateY(-50%);
-      width: 57.33333vw;
-      height: 57.33333vw;
+      width: 50.66667vw;
+      height: 50.66667vw;
       max-width: 215px;
       max-height: 215px;
       margin: auto; }
@@ -191,7 +191,7 @@ body {
     margin-left: 1.06667vw; }
 
 .song-info {
-  margin-top: 5.33333vw;
+  margin-top: 20px;
   padding: 0 9.33333vw;
   color: white;
   text-align: center; }
@@ -208,7 +208,7 @@ body {
     .song-info .song-header .song-author {
       color: rgba(255, 255, 255, 0.6); }
   .song-info .song-lyrics {
-    margin-top: 3.73333vw;
+    margin-top: 14px;
     overflow: hidden;
     height: 90px; }
     .song-info .song-lyrics .lrc-scroll {
@@ -219,7 +219,9 @@ body {
     .song-info .song-lyrics p {
       color: rgba(255, 255, 255, 0.6);
       line-height: 2;
-      transition: .6s linear; }
+      transition: .6s linear;
+      width: 90%;
+      margin: 0 auto; }
       @media (max-width: 374px) {
         .song-info .song-lyrics p {
           font-size: 13px; } }

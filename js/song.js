@@ -1,7 +1,7 @@
 var audiotest
 $(function () {
 
-    let songId = location.search.match(/\bid=([^&]*)/)[1]
+    let songId = location.search.match(/\bid=([^&]*)/)[1] ? location.search.match(/\bid=([^&]*)/)[1]: "-1" 
     let jukebox = $('.jukebox-container')
     let $discSwitch = $('.disc-switch')
     let $songLyrics = $(".song-lyrics")
@@ -25,6 +25,7 @@ $(function () {
         $(".song-cover").find('img').attr("src", elm.coverUrl)
         $(".js-song-name").text(elm.title)
         $('.js-song-author').text(elm.singer)
+        $('.js-song-gap').text("-")
     }
     function setLyric(elm) {
         let array = elm.lyric.split('\n')

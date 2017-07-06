@@ -88,11 +88,11 @@ body {
 .disc-wrapper {
     position: relative;
     margin: 0 auto;
-    height: pxvw(342);
-    width: pxvw(342);
+    height: pxvw(300);
+    width: pxvw(300);
     max-width: 342px;
     max-height: 342px;
-    background-size: pxvw(342);
+    background-size: pxvw(300);
     .song-cover {}
     .disc-turner {
         width: 100%;
@@ -119,8 +119,8 @@ body {
             left: 50%;
             top: 50%;
             transform: translateX(-50%) translateY(-50%);
-            width: pxvw(215);
-            height: pxvw(215);
+            width: pxvw(190);
+            height: pxvw(190);
             max-width: 215px;
             max-height: 215px;
             margin: auto;
@@ -229,7 +229,7 @@ body {
 }
 
 .song-info {
-    margin-top: pxvw(20);
+    margin-top: 20px;
     padding: 0 pxvw(35);
     color: white;
     text-align: center;
@@ -250,7 +250,7 @@ body {
         }
     }
     .song-lyrics {
-        margin-top: pxvw(14);
+        margin-top: 14px;
         overflow: hidden;
         height: 90px;
         .lrc-scroll {
@@ -263,6 +263,8 @@ body {
             color: rgba(255, 255, 255, 0.6); // height: 28px;
             line-height: 2;
             transition: .6s linear;
+            width: 90%;
+            margin: 0 auto;
             @media (max-width: 374px) {
                 font-size: 13px;
             } // padding: pxvw(7) 0;
