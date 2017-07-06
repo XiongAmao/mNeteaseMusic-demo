@@ -48,7 +48,7 @@ $(function () {
         lyricResize()
     }
     function initPlayer(url) {
-        audio.src = "http://orzqfde1a.bkt.clouddn.com/test.mp3"
+        audio.src = url 
         let lyricAnimationTimer
         $(audio).on('canplay', () => {
             audio.play()
