@@ -1,7 +1,7 @@
 # 网易云音乐-移动端页面仿站
 官网：http://music.163.com/m/ 
 # 预览
-https://xiongamao.github.io/mNeteaseMusic-demo/homepage.html
+https://xiongamao.github.io/mNeteaseMusic-demo/build/homepage.html
 
 # 依赖库
 - Jquery2.1.4
