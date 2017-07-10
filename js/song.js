@@ -1,13 +1,29 @@
-var audiotest
 $(function () {
+    // let isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigator.userAgent);
+    // var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    const isiOS = /ios|iPad|iPod|iPhone/.test(navigator.userAgent)
 
-    let songId = location.search.match(/\bid=([^&]*)/) ? location.search.match(/\bid=([^&]*)/)[1]: "-1" 
+    let songId = location.search.match(/\bid=([^&]*)/) ? location.search.match(/\bid=([^&]*)/)[1] : "-1"
     let jukebox = $('.jukebox-container')
     let $discSwitch = $('.disc-switch')
     let $songLyrics = $(".song-lyrics")
     let $lyricScroll = $('.song-lyrics .lrc-scroll')
 
-    var audio = audiotest = document.createElement('audio');
+    var audio = document.createElement('audio');
+    // ('oncanplay' in audio) ? alert('yes') : alert('no')
+    // // function detectEventSupport(eventName) {
+    // //     var isSupported
+    // //     isSupported = ('oncanplay' in audio); // 使用第一种方式
+    // //     // 如果第一种方式行不通，那就来看看它是不是已知事件类型
+    // //     if(!isSupported) {
+    // //     audio.setAttribute(eventName, 'xxx');
+    // //     isSupported = typeof tempElement[eventName] === 'function';
+    // // }
+    // // 清除掉动态创建的元素，以便内存回收
+    // tempElement = null;
+    // // 返回检测结果
+    // return isSupported;
+    // }
 
     $.get("./json/song_list.json")
         .then(function (response) {
@@ -49,15 +65,19 @@ $(function () {
         lyricResize()
     }
     function initPlayer(url) {
-        audio.src = url 
+        // audio.src = url 
+        audio.src = 'http://orzqfde1a.bkt.clouddn.com/test.mp3'
         let lyricAnimationTimer
         $(audio).on('canplay', () => {
-            audio.play()
-            console.log('can play now')
-            jukebox.addClass('playing')
-            $discSwitch.removeClass('ready')
-            $('.js-icon-loading').remove()
-            lyricAnimationTimer = lyricAnimation()
+            if (!isiOS) {
+                audio.play()
+                console.log('can play now')
+                jukebox.addClass('playing')
+                lyricAnimationTimer = lyricAnimation()
+            }
+            // $discSwitch.removeClass('ready')
+            // $('.js-icon-loading').remove()
+            lyricAnimationTimer = lyricAnimation() 
         })
         $(".js-play").on('click', () => {
             console.log("click play")
