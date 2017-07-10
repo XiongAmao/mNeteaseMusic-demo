@@ -12,7 +12,8 @@ https://xiongamao.github.io/mNeteaseMusic-demo/build/homepage.html
 # npm srcript build
 1. `npm run build1`
 2. `npm run start`
-3. `打开链接 http://127.0.0.1:8080/build/homepage.html`
+3. open in chrome `http://127.0.0.1:8080/homepage.html`
 
 ## Gulp
 1. `npm run gulp`
+2. open in chrome `http://127.0.0.1:8080/homepage.html`
