@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>网易云音乐</title>
+  <link rel="shortcut icon" href="./images/favicon.ico">
+  <link rel="icon" href="./images/favicon.ico">
   <link rel="stylesheet" href="./css/song.css">
 </head>
 
@@ -13,7 +15,7 @@
 
   <div class="page">
     <div class="background">
-
+ 
     </div>
 
     <section class="jukebox-container">
@@ -32,7 +34,7 @@
 
       </div>
 
-      <div class="disc-switch ready">
+      <div class="disc-switch ">
         <div class="js-play icon-play">
           <svg class="icon play" aria-hidden="true">
             <use xlink:href="#icon-play"></use>
@@ -43,41 +45,39 @@
             <use xlink:href="#icon-pause"></use>
           </svg>
         </div>
-        <div class="js-icon-loading icon-loading">
+        <!--<div class="js-icon-loading icon-loading">
           <svg class="icon loading" aria-hidden="true">
             <use xlink:href="#icon-loading2"></use>
           </svg>
-        </div>
+        </div>-->
 
       </div>
     </section>
-
     <section class="song-info">
       <div class="song-header">
-        <span class="js-song-name song-name">未找到歌曲</span>
+        <span class="js-song-name song-name"></span>
         <span class="js-song-gap song-gap"></span>
         <span class="js-song-author song-author"></span>
       </div>
       <div class="song-lyrics" data-lines="3">
         <div class="lrc-scroll">
         </div>
-
+ 
       </div>
     </section>
-
     <section class="links">
       <a href="javascript:void(0) " class="button btn-open">打开</a>
       <a href="javascript:void(0) " class="button btn-download">下载</a>
     </section>
   </div>
-  <script>
-    window.onerror = function (message, source, lineno, colno, error) {
-      alert(message)
-    }
-  </script>
   <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="//at.alicdn.com/t/font_vxsw3fs4184a38fr.js"></script>
   <script src="./js/song.js"></script>
+  <!--<script id="__bs_script__">
+    //<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.12'><\/script>".replace("HOST", location.hostname));
+//]]>
+  </script>-->
 </body>
 
 </html>

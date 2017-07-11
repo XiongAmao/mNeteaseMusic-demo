@@ -1,29 +1,22 @@
 $(function () {
     // let isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigator.userAgent);
     // var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    const isiOS = /ios|iPad|iPod|iPhone/.test(navigator.userAgent)
+    const canNotAutoPlay = /Quark|baidu|UCBrowser|OPR|MicroMessenger|MttCustomUA/.test(navigator.userAgent)
 
     let songId = location.search.match(/\bid=([^&]*)/) ? location.search.match(/\bid=([^&]*)/)[1] : "-1"
-    let jukebox = $('.jukebox-container')
-    let $discSwitch = $('.disc-switch')
-    let $songLyrics = $(".song-lyrics")
-    let $lyricScroll = $('.song-lyrics .lrc-scroll')
+    let jukebox = $('.jukebox-container'),
+        $discSwitch = $('.disc-switch'),
+        $songLyrics = $(".song-lyrics"),
+        $lyricScroll = $('.song-lyrics .lrc-scroll'),
+        $discTurner = $('.disc-turner'),
+        audio = document.createElement('audio'),
+        lyricAnimationTimer,
+        coverSpinTimer,
+        onCoverSpining = false,
+        discSpinDeg = 0
 
-    var audio = document.createElement('audio');
-    // ('oncanplay' in audio) ? alert('yes') : alert('no')
-    // // function detectEventSupport(eventName) {
-    // //     var isSupported
-    // //     isSupported = ('oncanplay' in audio); // 使用第一种方式
-    // //     // 如果第一种方式行不通，那就来看看它是不是已知事件类型
-    // //     if(!isSupported) {
-    // //     audio.setAttribute(eventName, 'xxx');
-    // //     isSupported = typeof tempElement[eventName] === 'function';
-    // // }
-    // // 清除掉动态创建的元素，以便内存回收
-    // tempElement = null;
-    // // 返回检测结果
-    // return isSupported;
-    // }
+    // 先处理歌词显示框
+    lyricResize()
 
     $.get("./json/song_list.json")
         .then(function (response) {
@@ -62,43 +55,49 @@ $(function () {
                     .appendTo($lyricScroll)
             }
         })
-        lyricResize()
+
     }
     function initPlayer(url) {
-        // audio.src = url 
-        audio.src = 'http://orzqfde1a.bkt.clouddn.com/test.mp3'
-        let lyricAnimationTimer
+        audio.src = url 
+        // audio.src = 'http://orzqfde1a.bkt.clouddn.com/test.mp3'
+        audio.play()
+
         $(audio).on('canplay', () => {
-            if (!isiOS) {
+            if (!canNotAutoPlay) {
                 audio.play()
                 console.log('can play now')
                 jukebox.addClass('playing')
                 lyricAnimationTimer = lyricAnimation()
+                playDiscSpin()
             }
             // $discSwitch.removeClass('ready')
             // $('.js-icon-loading').remove()
-            lyricAnimationTimer = lyricAnimation() 
+            lyricAnimationTimer = lyricAnimation()
         })
         $(".js-play").on('click', () => {
             console.log("click play")
             audio.play()
             lyricAnimationTimer = lyricAnimation()
             jukebox.addClass('playing')
+            playDiscSpin()
         })
         $(".js-pause").on("click", () => {
             console.log("click pause")
             audio.pause()
             jukebox.removeClass('playing')
             clearInterval(lyricAnimationTimer)
+            pauseDiscSpin()
         })
         $(audio).on('ended', () => {
             console.log("ended")
             jukebox.removeClass('playing')
             $('.lrc-scroll').css('transform', "")
             clearInterval(lyricAnimationTimer)
+            resetDiscSpin()
         })
     }
     function lyricAnimation() {
+        // 歌词动画
         return setInterval(() => {
             let audioCurrentTime = getAudioCurrentTime(audio)
             let $p = $lyricScroll.find("p[data-time]")
@@ -120,7 +119,9 @@ $(function () {
             }
         }, 500)
     }
+
     function lyricResize() {
+        // 根据浏览器宽高限制 歌词行数
         let slTop = $songLyrics.offset().top
         let height = $songLyrics.height()
         let slBottom = slTop + height
@@ -137,7 +138,9 @@ $(function () {
             }
         }
     }
+
     function getAudioCurrentTime(audio) {
+        // 获取当前播放时间
         let seconds = audio.currentTime
         let munites = ~~(seconds / 60)
         let left = seconds - munites * 60
@@ -146,5 +149,23 @@ $(function () {
     }
     function pad(number) {
         return number >= 10 ? number + "" : "0" + number
+    }
+    function playDiscSpin() {
+        if (!onCoverSpining) {
+            coverSpinTimer = setInterval(() => {
+                $discTurner.css('transform', `rotateZ(${discSpinDeg}deg)`)
+                discSpinDeg += 360 / 20 / 50
+            }, 20)
+            onCoverSpining = true
+        }
+    }
+    function pauseDiscSpin() {
+        clearInterval(coverSpinTimer)
+        onCoverSpining = false
+    }
+    function resetDiscSpin() {
+        clearInterval(coverSpinTimer)
+        onCoverSpining = false
+        $discTurner.css('transform', "")
     }
 })
