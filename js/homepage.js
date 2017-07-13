@@ -11,8 +11,15 @@ $(function () {
 
     // let id = parseInt(location.search.match(/\bid=([^&]*)/)[1],10) 
     getLastestMusic()
+    function getSongList(){
+        $.get('./json/song_list.json').then()
+    }
 
+    function search(){
+        return new Promise((resovle,reject)=>{
 
+        })
+    }
     function getLastestMusic() {
         $.get('./json/lastest_music.json')
             .then(function (response) {

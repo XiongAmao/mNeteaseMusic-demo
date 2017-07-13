@@ -38,12 +38,23 @@ https://xiongamao.github.io/mNeteaseMusic-demo/build/homepage.html
             ```
         2. 表现为JS触发 `audio.play()`后会触发`canplay` 事件丢浏览器则进行userAgent的匹配，当触发canplay事件后进行检测以排除。
     - 目前最大的问题是如何正确的检测浏览器是否能够自动播放，还需继续研究。
+    - 考虑到实际用户的场景，自动播放并不适用于所有用户，比如用户使用移动流量播放，在用户未确认之前，提前加载会导致用户流量浪费。
+
    
 2. iOS CSS3 animation pause的问题
     - 通过js执行动画
 
 3. vw 兼容性问题
     - px vw 混搭处理兼容问题
+
+# TODO 
+1. 搜索功能
+    - 搜索列表
+    - 结果列表    
+    - 历史搜索结果 localstorage
+2. homepage歌曲列表样式debug
+
+
 
 参考：
 http://js.jirengu.com/geyo/2/edit?js,output

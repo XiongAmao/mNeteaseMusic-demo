@@ -45,6 +45,16 @@ body {
 }
 
 
+/* 引入iconfont */ 
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+
 /* header */
 
 .topbar {
@@ -148,7 +158,7 @@ main {
 .loading-spin {
     position: absolute;
     left: 0;
-    top:30px;
+    top: 30px;
     z-index: 100;
     height: 20px;
     width: 100%;
@@ -209,9 +219,7 @@ main {
             }
         }
         .song-icon-play {
-            padding-right: pxvw(10);
-            padding-left: pxvw(4);
-            padding-top: pxvw(8);
+            padding:pxvw(8) pxvw(10) 0 pxvw(8);
             svg {
                 fill: #aaa;
                 width: pxvw(22);
@@ -338,7 +346,7 @@ article.container {
 
 /* 热歌榜 */
 
-.hot-list { 
+.hot-list {
     position: relative;
     .hl-wrapper {
         background: url(http://orzqfde1a.bkt.clouddn.com/hot_music_bg_2x.jpg) no-repeat;
@@ -352,7 +360,7 @@ article.container {
             background: rgba(0, 0, 0, .2);
             top: 0;
             left: 0;
-            z-index: 10; 
+            z-index: 10;
         }
     }
     .hl-banner {
@@ -406,7 +414,7 @@ article.container {
         color: #999;
         padding: pxvw(20);
     }
-    .song-list{
+    .song-list {
         position: relative;
         min-height: pxvw(50);
     }
@@ -428,6 +436,15 @@ article.container {
         }
         .left {
             width: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg {
+                width: pxvw(16);
+                height:pxvw(16);
+                display:block;
+                fill: #aaa;
+            }
         }
         input {
             flex: 1;
