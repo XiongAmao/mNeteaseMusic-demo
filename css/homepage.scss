@@ -45,7 +45,8 @@ body {
 }
 
 
-/* 引入iconfont */ 
+/* 引入iconfont */
+
 .icon {
     width: 1em;
     height: 1em;
@@ -167,7 +168,7 @@ main {
 }
 
 
-/* 歌单 */
+/* 通用歌单 */
 
 .song-list {
     a {
@@ -175,15 +176,17 @@ main {
         text-decoration: none;
         display: flex;
         align-items: center;
+        padding: pxvw(6) 0;
+        border-bottom: 1px solid #F1F1F2;
+        flex: 1;
         &:visited {
             text-decoration: none;
             color: #000;
         }
     }
     .song-item {
-        border-bottom: 1px solid #F1F1F2;
-        margin-left: pxvw(10);
-        padding: pxvw(6) 0;
+        display: flex;
+        padding-left: pxvw(10);
         color: #000;
         .song-infos {
             flex: 1;
@@ -206,6 +209,11 @@ main {
                 color: #888;
                 display: flex;
                 align-items: center;
+                .singer-info {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
                 .icon.sq {
                     width: pxvw(20);
                     height: pxvw(15);
@@ -219,7 +227,7 @@ main {
             }
         }
         .song-icon-play {
-            padding:pxvw(8) pxvw(10) 0 pxvw(8);
+            padding: pxvw(8) pxvw(10) 0 pxvw(8);
             svg {
                 fill: #aaa;
                 width: pxvw(22);
@@ -391,20 +399,19 @@ article.container {
     .song-rank {
         font-size: 17px;
         color: #999;
-        position: absolute;
-        top: 0;
-        transform: translateX(10%);
-        left: -9%;
-        height: 100%;
+        align-items: center;
         display: flex;
+        width: 7%;
         align-items: center;
         &.top {
             color: #DF3436;
         }
     }
     .song-item {
-        margin-left: 10%;
         position: relative;
+        a {
+            width: 92%;
+        }
     }
     .show-all {
         display: flex;
@@ -440,9 +447,10 @@ article.container {
             justify-content: center;
             align-items: center;
             svg {
+                margin-top: pxvw(2);
                 width: pxvw(16);
-                height:pxvw(16);
-                display:block;
+                height: pxvw(16);
+                display: block;
                 fill: #aaa;
             }
         }
@@ -456,6 +464,21 @@ article.container {
             line-height: pxvw(18);
             font-size: 14px;
             color: #333;
+        }
+        .input-close {
+            width: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .cha {
+                fill: #bbb;
+                display: none;
+                height: pxvw(18);
+                width: pxvw(18);
+            }
+            &.active .cha {
+                display: block;
+            }
         }
     }
 }

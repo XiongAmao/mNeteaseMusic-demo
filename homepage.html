@@ -175,8 +175,9 @@
             </section>
 
             <!--搜索-->
-            <section class="search ">
-                <form class="search-form" action="" method="get">
+            <section class="search">
+                <!-- 搜索输入框  -->
+                <form class="search-form" action="" method="post">
                     <div class="input-container">
                         <div class="left">
                             <svg class="icon play" aria-hidden="true">
@@ -184,10 +185,41 @@
                             </svg>
                         </div>
                         <input type="text" placeholder="搜索歌曲、歌手、专辑" autocomplete="off">
-                        <div class="right"></div>
+                        <figure class="input-close">
+                            <svg class="icon cha" >
+                                <use xlink:href="#icon-cha"></use>
+                            </svg>
+                        </figure>
+
                     </div>
                 </form>
-            </section>
+                <!-- 搜索建议  -->
+                <div class="search-recom">
+                    <div class="sr-input-btn"></div>
+                    <ul>
+                        <li class="recom-item"></li>
+                        <li class="recom-item"></li>
+                        <li class="recom-item"></li>
+                        <li class="recom-item"></li>
+                    </ul>
+                </div>
+                <!-- 默认结果 -->
+                <div class="search-default">
+                    <section class="sd-hotlist">
+                        <h3></h3>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </section>
+                    <section class="sd-history">
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </section>
+                </div>
+                <!-- 搜索结果  -->
+                <div class="search-result"></div>
+            </div>
         </article>
     </main>
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
