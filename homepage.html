@@ -177,7 +177,7 @@
             <!--搜索-->
             <section class="search">
                 <!-- 搜索输入框  -->
-                <form class="search-form" action="" method="post">
+                <form class="search-form" action="" >
                     <div class="input-container">
                         <div class="left">
                             <svg class="icon play" aria-hidden="true">
@@ -186,7 +186,7 @@
                         </div>
                         <input type="text" placeholder="搜索歌曲、歌手、专辑" autocomplete="off">
                         <figure class="input-close">
-                            <svg class="icon cha" >
+                            <svg class="icon cha">
                                 <use xlink:href="#icon-cha"></use>
                             </svg>
                         </figure>
@@ -195,35 +195,86 @@
                 </form>
                 <!-- 搜索建议  -->
                 <div class="search-recom">
-                    <div class="sr-input-btn"></div>
-                    <ul>
-                        <li class="recom-item"></li>
-                        <li class="recom-item"></li>
-                        <li class="recom-item"></li>
-                        <li class="recom-item"></li>
+                    <div class="sr-input-btn">搜索“123”</div>
+                    <ul class="search-list">
+                        <!-- <li class="recom-item item">
+                            <figure>
+                                <svg class="icon search2">
+                                    <use xlink:href="#icon-search2"></use>
+                                </svg>
+                            </figure>
+                            <p>123</p>
+                        </li>
+                        <li class="recom-item item">
+                            <figure>
+                                <svg class="icon search2">
+                                    <use xlink:href="#icon-search2"></use>
+                                </svg>
+                            </figure>
+                            <p>123</p>
+                        </li>
+                        <li class="recom-item item">
+                            <figure>
+                                <svg class="icon search2">
+                                    <use xlink:href="#icon-search2"></use>
+                                </svg>
+                            </figure>
+                            <p>123</p>
+                        </li>
+                        <li class="recom-item item">
+                            <figure>
+                                <svg class="icon search2">
+                                    <use xlink:href="#icon-search2"></use>
+                                </svg>
+                            </figure>
+                            <p>123</p>
+                        </li> -->
                     </ul>
                 </div>
                 <!-- 默认结果 -->
-                <div class="search-default">
+                <div class="search-default active">
                     <section class="sd-hotlist">
-                        <h3></h3>
+                        <h3>热门搜索</h3>
                         <ul>
-                            <li></li>
+                            <li>童话镇</li>
+                            <li>再也没有</li>
+                            <li>暧昧</li>
+                            <li>说散就散</li>
+                            <li>小梦大半</li>
+                            <li>Something Just Like This</li>
+                            <li>可乐</li>
+                            <li>We Don't Talk Anymore</li>
                         </ul>
                     </section>
                     <section class="sd-history">
-                        <ul>
-                            <li></li>
+                        <ul class="search-list">
+                            <li class="item">
+                                <figure>
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-clock"></use>
+                                    </svg>
+                                </figure>
+                                <p>aabcd1</p>
+                                <figure class="history-close">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-cha1"></use>
+                                    </svg>
+                                </figure>
+                            </li>
                         </ul>
                     </section>
                 </div>
                 <!-- 搜索结果  -->
-                <div class="search-result"></div>
-            </div>
+                <div class="search-result">
+                    <ol class="song-list">
+                        
+                    </ol>
+                </div>
+                <div class="loading-spin"></div>
         </article>
     </main>
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="//at.alicdn.com/t/font_5s31aaexquu6usor.js"></script>
+    <script src="//at.alicdn.com/t/font_v8l6dxpr66h1714i.js"></script>
     <script src="./js/homepage.js"></script>
     <!--<script id="__bs_script__">//<![CDATA[
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.12'><\/script>".replace("HOST", location.hostname));
