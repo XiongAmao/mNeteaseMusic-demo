@@ -42,19 +42,13 @@ https://xiongamao.github.io/mNeteaseMusic-demo/build/homepage.html
 
    
 2. iOS CSS3 animation pause的问题
-    - 通过js执行动画
+    - 通过JS实现唱片转动动画，解决iOS下，CSS无法pause的问题
 
 3. vw 兼容性问题
     - px vw 混搭处理兼容问题
 
 # TODO 
-1. 搜索功能
-    - 搜索列表
-    - 结果列表    
-    - 历史搜索结果 localstorage
-2. homepage歌曲列表样式debug
-
-
+基本功能已完成，搜索功能搜索的是所有歌曲的JSON文件，由于只有20首歌，因此搜索联想建议功能没有实现。
 
 参考：
 http://js.jirengu.com/geyo/2/edit?js,output
