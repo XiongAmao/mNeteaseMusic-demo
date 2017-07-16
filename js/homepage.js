@@ -17,32 +17,45 @@ $(function () {
         $('article>section').eq(index).addClass('active')
             .siblings().removeClass('active')
     })
-    
+
 
     // let id = parseInt(location.search.match(/\bid=([^&]*)/)[1],10) 
     getLastestMusic()
     getSongList()
     bindSearchTab()
-
+    // 获取全局歌曲，用于搜索匹配
+    function getSongList() {
+        $.get('./json/song_list.json').then(function (response) {
+            songList = response
+            // console.log(songList)
+        })
+    }
 
     // 搜索组件事件绑定
     function bindSearchTab() {
         $seartForm.on('submit', function (e) {
+            let value = $searhInput.val()
             e.preventDefault();
-            showSearchResult()
+            showSearchResult(value)
+            saveSearchHistory(value)
         })
+        // 搜索输入框关闭按钮
         $searhInputCloseBtn.on('click', function (e) {
             $searhInput.val("")
             $searhInputCloseBtn.removeClass('active')
             show$searchDefault()
+            buildHistory()
             clearTimeout(SearchInputTimer)
             clearResultList()
         })
-        $searchRecom.on('click', function () {
+        // 搜索建议 按钮
+        $searchRecom.find('.sr-input-btn').on('click', function () {
             let value = $searhInput.val()
             showSearchResult(value)
-
+            saveSearchHistory(value)
+            buildHistory()
         })
+        // 搜索输入框数值变化监听
         $searhInput.on('input change', function (e) {
             let value = $(this).val()
             if (value) {
@@ -59,14 +72,14 @@ $(function () {
                 clearResultList()
             }
         })
-        $('.sd-hotlist li').each(function(){
-            
+        // 热门搜索结果点击跳转
+        $('.sd-hotlist li').each(function () {
             let value = $(this).text()
-            $(this).on('click',function(){
+            $(this).on('click', function () {
                 $searhInput.val(value)
                 $searhInputCloseBtn.addClass('active')
                 showSearchResult(value)
-                console.log(123)
+                saveSearchHistory(value)
             })
         })
     }
@@ -86,13 +99,7 @@ $(function () {
         }
     }
 
-    // 获取全局歌曲，用于搜索匹配
-    function getSongList() {
-        $.get('./json/song_list.json').then(function (response) {
-            songList = response
-            // console.log(songList)
-        })
-    }
+
     // 清理搜索结果
     function clearResultList() {
         $searchResult.find('ol.song-list').empty()
@@ -103,7 +110,7 @@ $(function () {
         if (value) {
             let regex = new RegExp(value)
             result = songList.filter(function (item) {
-                return regex.test(item.name) || regex.test(item.album)|| regex.test(item.title)
+                return regex.test(item.name) || regex.test(item.album) || regex.test(item.title)
             })
         }
         return result
@@ -133,9 +140,52 @@ $(function () {
         })
     }
 
-    function recodeSearchResult(){
-        
+    // 搜索历史组件
+    function saveSearchHistory(value) {
+        let history = localStorage.getItem('search-history')
+        let array = history ? JSON.parse(history) : []
+        array.indexOf(value) === -1 && array.push(value)
+        localStorage.setItem('search-history', JSON.stringify(array))
     }
+    function deleteSearchHistory(value) {
+        let history = localStorage.getItem('search-history')
+        let array = history ? JSON.parse(history) : []
+        array = array.filter(function (item) {
+            return value !== item
+        })
+        localStorage.setItem('search-history', JSON.stringify(array))
+    }
+
+
+    function buildHistory() {
+        function showSearchHistory() {
+            return new Promise((resolve, reject) => {
+                let $searchList = $('.sd-history .search-list')
+                $searchList.empty()
+                let history = JSON.parse(localStorage.getItem('search-history'))
+                history.forEach(function (item) {
+                    let li = `  <li class="item"> <figure> <svg class="icon"> <use xlink:href="#icon-clock"></use> </svg> </figure> <p>${item}</p> <figure class="history-close"> <svg class="icon"> <use xlink:href="#icon-cha1"></use> </svg> </figure> </li>`
+                    $searchList.append($(li))
+                })
+                resolve()
+            })
+        }
+        showSearchHistory().then(
+            $('.sd-history .search-list')
+                .find('li').each(function (index, element) {
+                    $(element).on('click', function (e) {
+                        let value = $(this).find('p').text()
+                        showSearchResult(value)
+                        $searhInput.val(value)
+                        $searhInputCloseBtn.addClass('active')
+                    }).find('.history-close').on('click', function (e) {
+                        deleteSearchHistory($(element).find('p').text())
+                        buildHistory()
+                    })
+                })
+        )
+    }
+    buildHistory()
     // 最新音乐
     function getLastestMusic() {
         $.get('./json/lastest_music.json')
