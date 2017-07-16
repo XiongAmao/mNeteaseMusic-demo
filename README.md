@@ -1,10 +1,16 @@
 # 网易云音乐-移动端页面仿站
 官网：http://music.163.com/m/ 
 # 预览
+手机打开浏览器打开预览：
 https://xiongamao.github.io/mNeteaseMusic-demo/build/homepage.html
 
-# 依赖库
+或者扫描下面二维码：
+
+![](http://ond8gcwbr.bkt.clouddn.com/17-7-16/58346603.jpg)
+
+# 依赖
 - Jquery2.1.4
+- Gulp
 
 # 开发依赖
 1. `npm install`
