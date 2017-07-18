@@ -6,7 +6,7 @@ https://xiongamao.github.io/mNeteaseMusic-demo/build/homepage.html
 
 或者扫描下面二维码：
 
-![](http://ond8gcwbr.bkt.clouddn.com/17-7-16/58346603.jpg)
+![](https://xiongamao.github.io/mNeteaseMusic-demo/qrcode.jpeg)
 
 
 
