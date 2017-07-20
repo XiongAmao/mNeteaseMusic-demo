@@ -23,11 +23,11 @@ $(function () {
     getLastestMusic()
     getSongList()
     bindSearchTab()
+    buildHistory()
     // 获取全局歌曲，用于搜索匹配
     function getSongList() {
         $.get('./json/song_list.json').then(function (response) {
             songList = response
-            // console.log(songList)
         })
     }
 
@@ -43,10 +43,10 @@ $(function () {
         $searhInputCloseBtn.on('click', function (e) {
             $searhInput.val("")
             $searhInputCloseBtn.removeClass('active')
+            $searchResult.find('ol.song-list').empty()
             show$searchDefault()
-            buildHistory()
             clearTimeout(SearchInputTimer)
-            clearResultList()
+            buildHistory()
         })
         // 搜索建议 按钮
         $searchRecom.find('.sr-input-btn').on('click', function () {
@@ -67,21 +67,32 @@ $(function () {
                     matchResult(value)
                 }, 600)
             } else {
-                show$searchDefault()
+                $searchResult.find('ol.song-list').empty()
                 clearTimeout(SearchInputTimer)
-                clearResultList()
+                show$searchDefault()
             }
         })
-        // 热门搜索结果点击跳转
-        $('.sd-hotlist li').each(function () {
+        // 搜搜历史按钮 事件委托
+        $('.sd-hotlist').on('click', 'li', function () {
             let value = $(this).text()
-            $(this).on('click', function () {
+            $searhInput.val(value)
+            $searhInputCloseBtn.addClass('active')
+            showSearchResult(value)
+            saveSearchHistory(value)
+        })
+        $('.sd-history .search-list')
+            .on('click', '.item', function () {
+                console.log('click')
+                let value = $(this).find('p').text()
+                showSearchResult(value)
                 $searhInput.val(value)
                 $searhInputCloseBtn.addClass('active')
-                showSearchResult(value)
-                saveSearchHistory(value)
             })
-        })
+            .on('click', '.history-close', function (e) {
+                deleteSearchHistory($(this).siblings('p').text())
+                buildHistory()
+                e.stopPropagation()
+            })
     }
 
     // 展示结果
@@ -99,11 +110,6 @@ $(function () {
         }
     }
 
-
-    // 清理搜索结果
-    function clearResultList() {
-        $searchResult.find('ol.song-list').empty()
-    }
     // 根据song-list.json 匹配是否存在这首歌
     function matchResult(value) {
         let result = []
@@ -115,7 +121,6 @@ $(function () {
         }
         return result
     }
-
 
     // 搜索：默认/推荐/结果 显示控制
     function show$searchRecom() {
@@ -134,12 +139,6 @@ $(function () {
         $searchResult.addClass('active')
     }
 
-    function parseReuslt() {
-        return new Promise((resolve, reject) => {
-
-        })
-    }
-
     // 搜索历史组件
     function saveSearchHistory(value) {
         let history = localStorage.getItem('search-history')
@@ -156,36 +155,17 @@ $(function () {
         localStorage.setItem('search-history', JSON.stringify(array))
     }
 
-
+    // 构建历史记录
     function buildHistory() {
-        function showSearchHistory() {
-            return new Promise((resolve, reject) => {
-                let $searchList = $('.sd-history .search-list')
-                $searchList.empty()
-                let history = JSON.parse(localStorage.getItem('search-history'))
-                history.forEach(function (item) {
-                    let li = `  <li class="item"> <figure> <svg class="icon"> <use xlink:href="#icon-clock"></use> </svg> </figure> <p>${item}</p> <figure class="history-close"> <svg class="icon"> <use xlink:href="#icon-cha1"></use> </svg> </figure> </li>`
-                    $searchList.append($(li))
-                })
-                resolve()
-            })
-        }
-        showSearchHistory().then(
-            $('.sd-history .search-list')
-                .find('li').each(function (index, element) {
-                    $(element).on('click', function (e) {
-                        let value = $(this).find('p').text()
-                        showSearchResult(value)
-                        $searhInput.val(value)
-                        $searhInputCloseBtn.addClass('active')
-                    }).find('.history-close').on('click', function (e) {
-                        deleteSearchHistory($(element).find('p').text())
-                        buildHistory()
-                    })
-                })
-        )
+        let $searchList = $('.sd-history .search-list')
+        $searchList.empty()
+        let history = JSON.parse(localStorage.getItem('search-history'))
+        history.forEach(function (item) {
+            let li = `  <li class="item"> <figure> <svg class="icon"> <use xlink:href="#icon-clock"></use> </svg> </figure> <p>${item}</p> <figure class="history-close"> <svg class="icon"> <use xlink:href="#icon-cha1"></use> </svg> </figure> </li>`
+            $searchList.append($(li))
+        })
     }
-    buildHistory()
+
     // 最新音乐
     function getLastestMusic() {
         $.get('./json/lastest_music.json')
