@@ -196,7 +196,10 @@ main {
         display: flex;
         padding-left: pxvw(10);
         color: #000;
-        .song-infos {
+        a{
+            width:92%;
+        }
+        .song-infos { 
             flex: 1;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -206,6 +209,8 @@ main {
                 white-space: nowrap;
                 overflow: hidden;
                 color: #000;
+                height: 24px;
+                line-height: 24px;
                 span {
                     padding-left: .5em;
                     overflow: hidden;
@@ -221,6 +226,8 @@ main {
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     overflow: hidden;
+                    line-height: 17px;
+                    height:17px;
                 }
                 .icon.sq {
                     width: pxvw(20);
