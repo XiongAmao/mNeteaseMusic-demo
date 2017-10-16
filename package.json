@@ -13,7 +13,7 @@
     "uglifyjs": "node_modules/uglify-js/bin/uglifyjs  ./build/js/song.js -o ./build/js/song.js && node_modules/uglify-js/bin/uglifyjs ./build/js/homepage.js -o ./build/js/homepage.js",
     "build": "npm run reset && npm run cp && npm run css && npm run sass && npm run babel && npm run uglifyjs",
     "gulp": "./node_modules/gulp/bin/gulp.js",
-    "start": "cd build ; ../node_modules/node-static/bin/cli.js -i ",
+    "server": "cd build ; ../node_modules/node-static/bin/cli.js -i ",
     "browsersync": "cd build ; ../node_modules/browser-sync/bin/browser-sync.js start --files \"*.*\""
   },
   "keywords": [],
