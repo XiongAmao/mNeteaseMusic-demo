@@ -1,4 +1,9 @@
 $(function () {
+    // let isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigator.userAgent);
+    // if (!isMobile) {
+    //     window.location.href = '../../qr-code.html';
+    // }
+
     let $seartForm = $('.search-form'),
         $searhInput = $('.search-form input'),
         $searhInputCloseBtn = $('.search-form .input-close'),
@@ -159,7 +164,7 @@ $(function () {
     function buildHistory() {
         let $searchList = $('.sd-history .search-list')
         $searchList.empty()
-        let history = JSON.parse(localStorage.getItem('search-history'))
+        let history = JSON.parse(localStorage.getItem('search-history')) || []
         history.forEach(function (item) {
             let li = `  <li class="item"> <figure> <svg class="icon"> <use xlink:href="#icon-clock"></use> </svg> </figure> <p>${item}</p> <figure class="history-close"> <svg class="icon"> <use xlink:href="#icon-cha1"></use> </svg> </figure> </li>`
             $searchList.append($(li))
