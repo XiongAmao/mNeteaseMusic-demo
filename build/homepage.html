@@ -12,6 +12,12 @@
 </head>
 
 <body>
+    <script>
+        var isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigator.userAgent);
+        if (!isMobile) {
+            window.location.href = '../qr-code.html';
+        }
+    </script>
     <header class="topbar">
         <div class="topbar-logo">
             <svg class="topsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 50" data-reactid="6">
@@ -64,9 +70,15 @@
     <main>
         <nav class="site-nav">
             <ol>
-                <li class="selected"><span>推荐音乐</span></li>
-                <li><span>热歌榜</span></li>
-                <li><span>搜索</span></li>
+                <li class="selected">
+                    <span>推荐音乐</span>
+                </li>
+                <li>
+                    <span>热歌榜</span>
+                </li>
+                <li>
+                    <span>搜索</span>
+                </li>
             </ol>
         </nav>
         <!--主页-->
@@ -81,33 +93,50 @@
                             <img src="http://orzqfde1a.bkt.clouddn.com/playlist-1.jpg" alt="">
                             <p>国风电音‖一曲登仙_西洋人的中华古韵</p>
                             <div class="plays">
-                                <span>76</span><span>万</span></div>
+                                <span>76</span>
+                                <span>万</span>
+                            </div>
                         </li>
                         <li>
                             <img src="http://orzqfde1a.bkt.clouddn.com/playlist-2.jpg" alt="">
                             <p>『电影』刀尖上行走⚡子弹亦跳舞</p>
-                            <div class="plays"><span>30</span><span>万</span></div>
+                            <div class="plays">
+                                <span>30</span>
+                                <span>万</span>
+                            </div>
                         </li>
                         <li>
                             <img src="http://orzqfde1a.bkt.clouddn.com/playlist-3.jpg" alt="">
                             <p>女唱作人：有一种美丽叫才情</p>
-                            <div class="plays"><span>154</span><span>万</span></div>
+                            <div class="plays">
+                                <span>154</span>
+                                <span>万</span>
+                            </div>
                         </li>
                         <li>
                             <img src="http://orzqfde1a.bkt.clouddn.com/playlist-4.jpg" alt="">
                             <p>纯音乐正确的打开方式⓫⓫</p>
-                            <div class="plays"><span>121</span><span>万</span></div>
+                            <div class="plays">
+                                <span>121</span>
+                                <span>万</span>
+                            </div>
                         </li>
                         <li>
                             <img src="http://orzqfde1a.bkt.clouddn.com/playlist-5.jpg" alt="">
                             <p>那个微风的下午，街角的唱片店</p>
-                            <div class="plays"><span>123</span><span>万</span></div>
+                            <div class="plays">
+                                <span>123</span>
+                                <span>万</span>
+                            </div>
                         </li>
                         <li>
                             <img src="http://orzqfde1a.bkt.clouddn.com/playlist-6.jpg" alt="">
                             <p>【学习&作业】安静的音乐让你</p>
                             <!--集中精力。-->
-                            <div class="plays"><span>113</span><span>万</span></div>
+                            <div class="plays">
+                                <span>113</span>
+                                <span>万</span>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -177,7 +206,7 @@
             <!--搜索-->
             <section class="search">
                 <!-- 搜索输入框  -->
-                <form class="search-form" action="" >
+                <form class="search-form" action="">
                     <div class="input-container">
                         <div class="left">
                             <svg class="icon play" aria-hidden="true">
@@ -248,14 +277,14 @@
                     </section>
                     <section class="sd-history">
                         <ul class="search-list">
-                          
+
                         </ul>
                     </section>
                 </div>
                 <!-- 搜索结果  -->
                 <div class="search-result">
                     <ol class="song-list">
-                        
+
                     </ol>
                 </div>
                 <div class="loading-spin"></div>
