@@ -1,5 +1,8 @@
 $(function () {
     // let isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigator.userAgent);
+    // if(!isMobile){
+    //     window.location.href='../qr-code.html'; 
+    // }
     // var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     const canNotAutoPlay = /Quark|baidu|UCBrowser|OPR|MicroMessenger|MttCustomUA/.test(navigator.userAgent)
 

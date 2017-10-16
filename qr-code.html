@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网易云音乐-demo</title>
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="icon" href="./images/favicon.ico">
+    <style>
+        main {
+            text-align: center;
+            margin: 120px auto;
+            width: 600px;
+            height: 500px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            box-shadow: 0px 4px 20px 1px rgba(0, 0, 0, .3);
+            animation: 1.5s ease-out fadeInDown;
+        }
+        p:nth-child(1){
+            padding-top: 20px;
+        }
+        img {
+            width: 300px;
+            height: 300px;
+            display: block;
+            margin: 0 auto;
+            border: 1px solid;
+        }
+        span{
+            font-size: 22px;
+            color:#ff0072;
+        }
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, -40%, 0)
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+        a{
+            color: #ff0072;
+        }
+        a:visited{
+            color:#ff0072;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+
+        <p> <span>Ops!</span>该项目是移动端页面，请使用手机扫描二维码体验噢：</p>
+        <img src="./qrcode.jpeg" alt="">
+        <p>or</p>
+        <a href="https://github.com/XiongAmao/mNeteaseMusic-demo">View on GitHub</a>
+    </main>
+
+</body>
+
+</html>

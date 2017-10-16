@@ -1,8 +1,8 @@
 $(function () {
-    // let isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigator.userAgent);
-    // if (!isMobile) {
-    //     window.location.href = '../../qr-code.html';
-    // }
+    let isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigator.userAgent);
+    if (!isMobile) {
+        window.location.href = '../../qr-code.html';
+    }
 
     let $seartForm = $('.search-form'),
         $searhInput = $('.search-form input'),
